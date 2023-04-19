@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 14px;
+  font-family: "Nunito Sans", sans-serif;
+  background-color: hsl(0, 0%, 98%);
+}
+
+.filters,
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+header {
+  background-color: hsl(0, 0%, 100%);
+  margin-bottom: 32px;
+}
+header button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 32px;
+  max-width: 1200px;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+#query {
+  background-color: hsl(0, 0%, 100%);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px 0px rgba(66, 68, 90, 0.315);
+  padding: 10px 20px;
+}
+
+ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 70px;
+  list-style: none;
+}
+
+li {
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px 0px rgba(66, 68, 90, 0.315);
+  overflow: hidden;
+  background-color: hsl(0, 0%, 100%);
+}
+li img {
+  aspect-ratio: 160/98;
+  width: 100%;
+}
+
+.info-container {
+  padding: 30px 20px;
+}
+
+.country-name {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 968px) {
+  ul {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media (max-width: 600px) {
+  ul {
+    grid-template-columns: 1fr 1fr;
+  }
+}/*# sourceMappingURL=styles.css.map */
