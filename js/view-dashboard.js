@@ -1,37 +1,40 @@
-const API_URL = 'https://restcountries.com/v3.1/all'
-let countries
-let query = ''
-let region = ''
+export const renderDashboard = () => {
+	const API_URL = 'https://restcountries.com/v3.1/all'
+	let countries
+	let query = ''
+	let region = ''
 
-fetch(API_URL)
-	.then(res => res.json())
-	.then(countriesRaw => {
-		countries = countriesRaw.map(country => {
-			return {
-				capital: country.capital && country.capital[0],
-				population: country.population,
-				name: country.name.common,
-				region: country.region,
-				flagUrl: country.flags.png,
-			}
+	fetch(API_URL)
+		.then(res => res.json())
+		.then(countriesRaw => {
+			countries = countriesRaw.map(country => {
+				return {
+					capital: country.capital && country.capital[0],
+					population: country.population.toLocaleString(),
+					name: country.name.common,
+                    code: country.cioc,
+					region: country.region,
+					flagUrl: country.flags.png,
+				}
+			})
+			renderCountriesList(countries)
 		})
-		renderCountriesList(countries)
+	const filteredDataAndRenderedCoutriesList = () => {
+		const filteredCountries = countries.filter(country => {
+			return country.name.toLowerCase().includes(query) && (!region || country.region === region)
+		})
+		renderCountriesList(filteredCountries)
+	}
+	document.querySelector('#query').addEventListener('input', e => {
+		query = e.target.value.toLowerCase().trim()
+		filteredDataAndRenderedCoutriesList()
 	})
-const filteredDataAndRenderedCoutriesList = () => {
-	const filteredCountries = countries.filter(country => {
-		return country.name.toLowerCase().includes(query) && (!region || country.region === region)
-	})
-	renderCountriesList(filteredCountries)
-}
-document.querySelector('#query').addEventListener('input', e => {
-	query = e.target.value.toLowerCase().trim()
-	filteredDataAndRenderedCoutriesList()
-})
 
-document.querySelector('#region').addEventListener('change', e => {
-	region = e.target.value
-	filteredDataAndRenderedCoutriesList() 
-})
+	document.querySelector('#region').addEventListener('change', e => {
+		region = e.target.value
+		filteredDataAndRenderedCoutriesList()
+	})
+}
 
 const createInfoElement = (labelName, value) => {
 	const infoElement = document.createElement('div')
@@ -57,8 +60,9 @@ const createFlagImgElement = country => {
 
 const createCountryItemElement = country => {
 	const countryElement = document.createElement('li')
-
-	countryElement.append(createFlagImgElement(country))
+	const anchorElement = document.createElement('a')
+	anchorElement.href = `?country=${country.code}`
+	anchorElement.append(createFlagImgElement(country))
 	const infoContainerElement = document.createElement('div')
 	infoContainerElement.classList.add('info-container')
 
@@ -70,8 +74,8 @@ const createCountryItemElement = country => {
 	infoContainerElement.append(createInfoElement('Population', country.population))
 	infoContainerElement.append(createInfoElement('Region', country.region))
 	infoContainerElement.append(createInfoElement('Capital', country.capital))
-	countryElement.append(infoContainerElement)
-
+	anchorElement.append(infoContainerElement)
+	countryElement.append(anchorElement)
 	return countryElement
 }
 

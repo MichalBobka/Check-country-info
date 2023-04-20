@@ -28,6 +28,16 @@ header button {
   font-size: 24px;
 }
 
+.dark-lighter {
+  background-color: hsl(207, 26%, 17%);
+  color: hsl(0, 0%, 100%);
+}
+
+.darker {
+  background-color: hsl(207, 26%, 17%);
+  color: hsl(0, 0%, 100%);
+}
+
 .header-content {
   display: flex;
   justify-content: space-between;
@@ -37,6 +47,10 @@ header button {
 }
 
 .filters {
+  display: none;
+}
+
+.filters.active {
   display: flex;
   justify-content: space-between;
   margin-bottom: 30px;
@@ -66,6 +80,10 @@ li {
 li img {
   aspect-ratio: 160/98;
   width: 100%;
+}
+li a {
+  text-decoration: none;
+  color: hsl(200, 15%, 8%);
 }
 
 .info-container {
