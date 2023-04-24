@@ -12,6 +12,7 @@ const createInfoElement = (labelName, value) => {
 
 const createFlagImgElement = country => {
 	const imgContainerElement = document.createElement('div')
+	imgContainerElement.classList.add('img-container')
 	const imgElement = document.createElement('img')
 	imgElement.src = country.flagUrl
 	imgElement.alt = `${country.name} flag`
@@ -116,6 +117,6 @@ export const renderCountriesList = countries => {
 export const renderCountryDetails = country => {
 	const rootElement = document.querySelector('#main')
 	rootElement.innerHTML = ''
-	rootElement.append(createDetailButton('Go back', '/'))
+	rootElement.append(createDetailButton('← Back', '/'))
 	rootElement.append(createDetailElement(country))
 }
