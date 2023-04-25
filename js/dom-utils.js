@@ -119,6 +119,6 @@ export const renderCountriesList = countries => {
 export const renderCountryDetails = country => {
 	const rootElement = document.querySelector('#main')
 	rootElement.innerHTML = ''
-	rootElement.append(createDetailButton('← Back', '/'))
+	rootElement.append(createDetailButton('← Back', 'javascript:history.back()'))
 	rootElement.append(createDetailElement(country))
 }
