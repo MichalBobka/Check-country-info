@@ -99,14 +99,14 @@ const createDetailButton = (text, link) => {
 
 const createBorderCountriesContainer = country => {
 	const borderCountriesContainerElement = document.createElement('div')
-    borderCountriesContainerElement.classList.add('border-countries-container')
+	borderCountriesContainerElement.classList.add('border-countries-container')
 	const labelElement = document.createElement('strong')
 	labelElement.innerText = 'Border Countries'
 
 	borderCountriesContainerElement.append(labelElement)
 
 	country.borders.forEach(border => {
-		borderCountriesContainerElement.append(createDetailButton(border, `/?country=${border}`))
+		borderCountriesContainerElement.append(createDetailButton(border, `Check-country-info/?country=${border}`))
 	})
 	return borderCountriesContainerElement
 }
