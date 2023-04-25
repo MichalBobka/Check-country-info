@@ -52,6 +52,8 @@ const createListElement = countries => {
 
 const createDetailElement = country => {
 	const detailContainerElement = document.createElement('div')
+	const footer = document.querySelector('footer')
+	footer.classList.add('footer-detail')
 	const FlagImgElement = createFlagImgElement(country)
 	const detailContentElement = document.createElement('div')
 	detailContainerElement.classList.add('detail-container')
