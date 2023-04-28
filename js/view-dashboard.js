@@ -1,10 +1,10 @@
-import { renderCountriesList } from './dom-utils.js'
+import { renderCountriesList } from './dom-utils.js';
 
 export const renderDashboard = () => {
-	const API_URL = 'https://restcountries.com/v3.1/all'
-	let countries
-	let query = ''
-	let region = ''
+	const API_URL = 'https://restcountries.com/v3.1/all';
+	let countries;
+	let query = '';
+	let region = '';
 
 	fetch(API_URL)
 		.then(res => res.json())
@@ -17,23 +17,23 @@ export const renderDashboard = () => {
 					code: country.cioc,
 					region: country.region,
 					flagUrl: country.flags.png,
-				}
-			})
-			renderCountriesList(countries)
-		})
+				};
+			});
+			renderCountriesList(countries);
+		});
 	const filteredDataAndRenderedCoutriesList = () => {
 		const filteredCountries = countries.filter(country => {
-			return country.name.toLowerCase().includes(query) && (!region || country.region === region)
-		})
-		renderCountriesList(filteredCountries)
-	}
+			return country.name.toLowerCase().includes(query) && (!region || country.region === region);
+		});
+		renderCountriesList(filteredCountries);
+	};
 	document.querySelector('#query').addEventListener('input', e => {
-		query = e.target.value.toLowerCase().trim()
-		filteredDataAndRenderedCoutriesList()
-	})
+		query = e.target.value.toLowerCase().trim();
+		filteredDataAndRenderedCoutriesList();
+	});
 
 	document.querySelector('#region').addEventListener('change', e => {
-		region = e.target.value
-		filteredDataAndRenderedCoutriesList()
-	})
-}
+		region = e.target.value;
+		filteredDataAndRenderedCoutriesList();
+	});
+};
