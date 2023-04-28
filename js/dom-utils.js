@@ -151,7 +151,6 @@ const enableLightMode = () => {
 	const h1 = document.querySelector('h1');
 	const infoCont = document.querySelectorAll('.info-container');
 	const bodyElement = document.querySelector('body');
-	const detailButton = document.querySelector('.detail-button');
 
 	themeBtn.classList.remove('dark-lighter');
 	bodyElement.classList.remove('darker');
@@ -166,7 +165,6 @@ const enableLightMode = () => {
 	headerContent.classList.remove('dark-lighter');
 	inputBox.classList.remove('dark-lighter');
 	selectBox.classList.remove('dark-lighter');
-	detailButton.classList.remove('dark-lighter');
 	h1.classList.remove('dark-lighter');
 	localStorage.setItem('darkModeEnabled', false);
 };
