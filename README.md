@@ -4,6 +4,8 @@
 
 Check-country-info is a cool project which i build using HTML CSS and JAVASCRIPT.
 
+To create this i used rescountries api.
+
 Page works in English.
 
 
